@@ -36,6 +36,7 @@ public class Server implements Runnable{
     }
 
     public void broadcastMessage(String message, int number){
+        System.out.println(message);
         for (Client client: clients) {
             if(client.getNumber() != number)
                 client.sendMessage(message);

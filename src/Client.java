@@ -34,7 +34,6 @@ public class Client implements Runnable{
         String inputMessage;
         out.println("Вас приветствует чат-сервер!");
         while(!(inputMessage = in.nextLine()).equals("exit")){
-            System.out.println(number + ": " + inputMessage);
             server.broadcastMessage(number + ": " + inputMessage, number);
         }
         server.deleteClient(this);
