@@ -35,9 +35,15 @@ public class Server implements Runnable{
         }
     }
 
-    public void broadcastMessage(String message){
+    public void broadcastMessage(String message, int number){
         for (Client client: clients) {
-            client.sendMessage(message);
+            if(client.getNumber() != number)
+                client.sendMessage(message);
         }
+    }
+
+    public void deleteClient(Client client){
+        clients.remove(client);
+        System.out.println("Клиент " + client.getNumber() + " покинул чат");
     }
 }
