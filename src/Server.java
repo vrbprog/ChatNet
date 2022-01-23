@@ -13,6 +13,7 @@ public class Server implements Runnable{
     public Server(int port) {
         try {
             server = new ServerSocket(port);
+            new Thread(this).start();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -27,8 +28,7 @@ public class Server implements Runnable{
                 System.out.println("Подключился новый клиент: " + clientNumber);
                 client = new Client(socket, this, clientNumber++);
                 clients.add(client);
-                Thread thread = new Thread(client);
-                thread.start();
+                new Thread(client).start();
             }
         } catch (IOException e) {
             e.printStackTrace();
